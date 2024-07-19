@@ -14,7 +14,7 @@ python main.py
 ```
 
 ## Expected Results
-The program will export four csv file for four different usages:
+The program will export four csv files for four different usages:
 `ElectricityOptimization_demo3_output1.csv`:
 ![Alt text](image-1.png)
 
