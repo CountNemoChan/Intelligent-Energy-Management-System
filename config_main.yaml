@@ -1,0 +1,6 @@
+url: "http://27.148.193.68:9089/api/TokenAuth/Authenticate"
+headers:
+    Content-Type: "application/json-patch+json"
+payload:
+    usernameOrEmailAddress: 'dev_admin'
+    password: '123qwe'
