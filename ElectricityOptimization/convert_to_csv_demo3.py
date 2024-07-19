@@ -3,7 +3,7 @@ import csv
 import requests
 import yaml
 
-def ElectricityOptimization(accessToken):
+def ElectricityOptimization(accessToken,base_url):
     ########
     # # 方式一：直接打开JSON文件并加载数据
     # with open('response.json', 'r', encoding='utf-8') as f:
@@ -39,7 +39,7 @@ def ElectricityOptimization(accessToken):
     with open('ElectricityOptimization/config.yaml', 'r', encoding='utf-8') as f:
         config = yaml.safe_load(f)
 
-    url = config['url']
+    url = f"{base_url}/api/services/app/ElectricityOptimization/ElectricityOptimizationSearch"
     headers = {
         "accept": "text/plain",
         "Content-Type": "application/json-patch+json",

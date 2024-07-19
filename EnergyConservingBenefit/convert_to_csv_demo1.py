@@ -3,12 +3,12 @@ import csv
 import requests
 import yaml
 
-def EnergyConservingBenefit(accessToken):
+def EnergyConservingBenefit(accessToken, base_url):
     # 使用配置文件获取数据
     with open('EnergyConservingBenefit/config.yaml', 'r', encoding='utf-8') as f:
         config = yaml.safe_load(f)
 
-    url = config['url']
+    url = f"{base_url}/api/services/app/EnergyConservingBenefit/EnergyConservingBenefitSearch"
     headers = {
         "accept": "text/plain",
         "Content-Type": "application/json-patch+json",

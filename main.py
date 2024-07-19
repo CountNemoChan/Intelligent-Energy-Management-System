@@ -14,6 +14,10 @@ url = config['url']
 headers = config['headers']
 payload = config['payload']
 
+# Etract the IP address in a specific region
+base_url = url.split("/api")[0]
+print(base_url)
+
 # Send the API request
 response = requests.post(url, headers=headers, json=payload)
 
@@ -42,7 +46,7 @@ if data and 'result' in data:
 else:
     print("Response JSON does not contain 'result' or the response is not valid JSON")
 
-ElectricityOptimization(accessToken)
-EnergyConservingBenefit(accessToken)
-EnergyTuning(accessToken)
-SynthesizeEnergyIncome(accessToken)
+ElectricityOptimization(accessToken, base_url)
+EnergyConservingBenefit(accessToken, base_url)
+EnergyTuning(accessToken, base_url)
+SynthesizeEnergyIncome(accessToken, base_url)
