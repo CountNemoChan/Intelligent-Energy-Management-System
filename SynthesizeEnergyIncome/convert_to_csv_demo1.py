@@ -20,16 +20,17 @@ def SynthesizeEnergyIncome(accessToken, base_url):
     # Send the API request
     response = requests.post(url, headers=headers, json=payload)
     data = response.json()
-
+    
     ########
 
     count = 0
     aa = 0
     bb= 0
+    cc = 0
 
     a = []
     b = []
-
+    c = []
     # 打开CSV文件准备写入
     with open('SynthesizeEnergyIncome_demo1_output1.csv', 'w', newline='', encoding='utf-8') as csvfile:
         fieldnames = ['日期', '自发自用', '余电上网', '储能上网']
@@ -48,6 +49,9 @@ def SynthesizeEnergyIncome(accessToken, base_url):
                 elif name == "余电上网":
                     b.append(item['_Value'])
                     bb += 1
+                # elif name == "储能上网":
+                #     c.append(item['_Value'])
+                #     cc += 1
 
         # 检查列表长度
         max_len = min(len(a), len(b))
@@ -58,9 +62,11 @@ def SynthesizeEnergyIncome(accessToken, base_url):
                 # 'total': total,
                 '日期': data['result'][0]['dtoList'][i]['theDateStr'],
                 '自发自用': a[i],
-                '余电上网': b[i]  
+                '余电上网': b[i], 
+                # '储能上网': c[i] 
             }
             writer.writerow(row)
             
 
-    print("JSON文件已成功转换为CSV文件")
+    print("SynthesizeEnergyIncome-JSON文件已成功转换为CSV文件")
+    # print(data)

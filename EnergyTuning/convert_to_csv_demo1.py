@@ -31,7 +31,7 @@ def EnergyTuning(accessToken, base_url):
 
     # 打开CSV文件准备写入
     with open('EnergyTuning_demo1_output1.csv', 'w', newline='', encoding='utf-8') as csvfile:
-        fieldnames = ['今日', '本月']
+        fieldnames = ['Company', '今日', '本月']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
         writer.writeheader()
@@ -54,10 +54,11 @@ def EnergyTuning(accessToken, base_url):
             row = {
                 # 'name': name,
                 # 'total': total,
+                'Company': 'ABB',
                 '今日': a[i],
                 '本月': b[i]  
             }
             writer.writerow(row)
             
 
-    print("JSON文件已成功转换为CSV文件")
+    print("EnergyTuning-JSON文件已成功转换为CSV文件")

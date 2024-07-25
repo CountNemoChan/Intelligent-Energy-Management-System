@@ -66,7 +66,7 @@ def ElectricityOptimization(accessToken,base_url):
     e = []
     # 打开CSV文件准备写入
     with open('ElectricityOptimization_demo3_output1.csv', 'w', newline='', encoding='utf-8') as csvfile:
-        fieldnames = ['recordTime', 'theDateStr', '_Value', 'value_jian','value_feng','value_ping', 'value_gu', 'value_optimize_recommendation']
+        fieldnames = ['recordTime', 'theDateStr', 'value_jian','value_feng','value_ping', 'value_gu', 'value_optimize_recommendation']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
         writer.writeheader()
@@ -112,4 +112,4 @@ def ElectricityOptimization(accessToken,base_url):
             if count == 96:
                 break
 
-    print("JSON文件已成功转换为CSV文件")
+    print("ElectricityOptimization-JSON文件已成功转换为CSV文件")

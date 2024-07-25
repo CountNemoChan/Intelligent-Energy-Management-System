@@ -4,3 +4,9 @@ headers:
 payload:
     usernameOrEmailAddress: 'dev_admin'
     password: '123qwe'
+
+# Database interface
+database_server: 'localhost'
+database_name: 'ZEE600Data_Ins_SKDS'
+username: 'ZEE600'
+password: 'Aa123456'

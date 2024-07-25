@@ -2,6 +2,7 @@ import json
 import csv
 import requests
 import yaml
+from datetime import datetime 
 
 def EnergyConservingBenefit(accessToken, base_url):
     # 使用配置文件获取数据
@@ -29,9 +30,12 @@ def EnergyConservingBenefit(accessToken, base_url):
     a = []
     b = []
 
+    now = datetime.now()
+    year = now.year
+    last_year = year - 1
     # 打开CSV文件准备写入
     with open('EnergyConservingBenefit_demo1_output1.csv', 'w', newline='', encoding='utf-8') as csvfile:
-        fieldnames = ['月份', '2023年用电量', '2024年用电量']
+        fieldnames = ['月份', f'{last_year}年用电量', f'{year}年用电量']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
         writer.writeheader()
@@ -41,10 +45,10 @@ def EnergyConservingBenefit(accessToken, base_url):
             name = result['name']
             total = result['total']
             for item in result['dtoList']:
-                if name == '2023':
+                if name == f"{last_year}":
                     a.append(item['_Value'])
                     aa += 1
-                elif name == '2024':
+                elif name == f"{year}":
                     b.append(item['_Value'])
                     bb += 1
 
@@ -56,10 +60,11 @@ def EnergyConservingBenefit(accessToken, base_url):
                 # 'name': name,
                 # 'total': total,
                 '月份': f"{i+1}月",
-                '2023年用电量': a[i],
-                '2024年用电量': b[i]  
+                f'{last_year}年用电量': a[i],
+                f'{year}年用电量': b[i]  
             }
             writer.writerow(row)
             
 
-    print("JSON文件已成功转换为CSV文件")
+    print("EnergyConservingBenefit-JSON文件已成功转换为CSV文件")
+   
